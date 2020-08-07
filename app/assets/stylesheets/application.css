@@ -1,0 +1,484 @@
+* {
+    margin: 0; padding: 0;
+}
+
+nav ul#menu {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: #012169;
+    list-style-type: none;
+    position: sticky;
+    background-position: 0px 0px;
+    height: 55px;
+}
+
+nav img{
+    background-position: 40px 40px;
+    height: 50px;
+    aspect-ratio: true;
+    padding-right: 30px;
+    border-right: 1px solid #ffffff;
+    vertical-align: baseline;
+    float: left;
+}
+
+
+nav ul#menu li.name{
+    font-family: "Open Sans";
+    font-weight: 400;
+    font-size: 40px;
+    color: #ffffff;
+    border-right: none;
+    /* padding-bottom: 30px;
+    padding-right: 670px; */
+    padding-left: 25px;
+    float: left;
+    border-left: none;
+}
+
+nav ul#menu li{
+    float: right;
+    display: inline;
+    vertical-align: baseline;
+    font-family: "Open Sans";
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 7px;
+    font-weight: bold;
+    font-size: 14px;
+    border-left: 1px solid #ffffff;
+}
+
+nav ul#menu li:last-child {
+    border-left: none;
+}
+
+nav ul#menu li a {
+    color: #ffffff;
+    vertical-align: center;
+    font-style: normal;
+    text-decoration: none;
+}
+
+nav ul#menu li a:hover {
+    color: #FFD960;
+}
+
+nav ul#menu li a.active {
+    color: #FFD960;
+}
+
+h1 {
+    font-family: "Merriweather";
+    font-weight: 400;
+    font-size: 48px;
+    margin-top: 20px;
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-bottom: 0px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    /* padding-top: 20px; */
+    padding-bottom: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    text-align: left;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 300;
+}
+
+ul#toolbar {
+    padding-top: 0px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-bottom: 24px;
+}
+
+ul#toolbar li{
+    display: inline;
+    font-family: "Open Sans";
+    /* padding-left: 1287px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px; */
+    font-weight: 400;
+    font-size: 18px;
+    border-right: 1px solid #ffffff;
+    color: #ffffff;
+    margin-right: 5px;
+    float: right;
+}
+
+ul#toolbar li:last-child {
+    padding-left: 0px;
+    border-right: none;
+}
+
+ul#toolbar li a {
+    background-color: #012169;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    color: #ffffff;
+    vertical-align: center;
+    font-style: normal;
+    text-decoration: none;
+}
+
+ul#toolbar li a:hover {
+    background-color: #00539B;
+    color: #ffffff;
+}
+
+ul#toolbar li a.active {
+    background-color: #E2E6ED;
+    color: #012169;
+}
+
+div {
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    background-color: #E2E6ED;
+}
+
+/* div table{ if the tables are too wide on some screens, we could use this so that they are scrollable
+    overflow-x:scroll; 
+    width:1350px;   
+    display:block;  
+}*/
+
+div table thead th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    background-color: #012169;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+div table tbody td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: left;
+    background-color: #ffffff;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 300;
+    color: #012169;
+}
+
+div table tbody td.center {
+    text-align: center;
+}
+#responsive-image {  width: 200px;  height: auto; } 
+
+div table tbody td button {
+    padding: 5px 10px 5px 10px;
+    margin: 2px;
+    background-color: #00539B;
+    border: none;
+    border-radius: 5px;
+    width: 90px;
+}
+
+div table tbody td button:hover {
+    background-color: #012169;
+}
+
+div table tbody td a {
+    color: #ffffff;
+    /* background-color: #00539B; */
+    text-decoration: none;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 300;
+}
+
+div table tbody td.no-wrap {
+    padding: 10px;
+    /* background-color: #00539B; */
+}
+
+div.field {
+    padding: 40px 40px 0px 40px;
+    display: flex;
+    flex-flow: nowrap;
+    justify-content: space-between;
+    /* width: 100%; */
+}
+
+div.field label {
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 400;
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-top: 6px;
+    color: #012169;
+}
+
+div.showlabel {
+    padding: 40px 40px 0px 40px;
+    display: flex;
+    /*flex-flow: nowrap;*/
+    justify-content: left;
+}
+
+div.showlabel label {
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 400;
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-top: 6px;
+    color: #012169;
+    float: left;
+    width: 20%
+    /* clear: left; */
+    /* width: 15em; */
+}
+
+div.showlabel label.autofilled {
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 200;
+    /* padding-right: 40px; */
+    width: 75%;
+    margin-right: 40px;
+    margin-top: 0px;
+    margin-left: -2%;
+    /* margin-top: -30px; */
+    /* padding-bottom: 25px; */
+    color: #012169;
+    /* float: left; */
+    clear: left;
+}
+
+div.field input {
+    padding: 8px;
+    width: 85%;
+    border: none;
+    border-radius: 3px;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 300;
+    color: #012169;
+}
+
+/* div.field input:focus {
+    padding: 8px;
+    border: 1px solid #012169;
+} */
+
+div.field textarea {
+    padding: 8px;
+    width: 40%;
+    margin-right: 35%;
+    height: 100px;
+    border: none;
+    border-radius: 3px;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 300;
+    color: #012169;
+}
+
+div.field input.short-text {
+    width: 30%;
+    margin-right: 45%;
+}
+
+div.field input.file {
+    width: 30%;
+    margin-right: 45%;
+}
+
+div.field input.time {
+    width: 20%;
+    margin-right: 55%;
+}
+
+div.field input.number {
+    width: 10%;
+    margin-right: 65%;
+}
+
+.validationFixedWidth{
+    width: 300px !important;
+    margin-right: 890px !important;
+}
+
+.validationFixedWidthDescription{
+    width: 350px !important;
+    margin-right: 840px !important;
+}
+
+.validationFixedWidthCategory{
+    width: 200px !important;
+    margin-right: 1007px !important;
+}
+.validationFixedWidthRadius {
+    width: 300px !important;
+    margin-right: 890px !important;
+    color: red;
+}
+
+div.field select {
+    padding: 8px;
+    width: 20%;
+    margin-right: 56%;
+    border: none;
+    border-radius: 3px;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 300;
+    color: #012169;
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+div.field select:active {
+    padding: 8px;
+    width: 20%;
+    margin-right: 56%;
+    border: none;
+    border-radius: 3px;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 300;
+    background-color: #00539B;
+    color: #ffffff;
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+div.field select:hover {
+    background-color: #ffffff;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 300;
+    color: #012169;
+}
+
+div.field select.time {
+    padding: 8px;
+    width: 150px;
+    margin-left: 0px;
+    margin-right: 0px;
+    /* padding-left: 10px; */
+    /* padding-right: 10px; */
+    border: none;
+    border-radius: 3px;
+    position: relative;
+    display: block;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 300;
+    color: #012169;
+    cursor: pointer;
+}
+
+.select {
+    margin-left: 40px;
+    margin-top: 40px;
+}
+
+.submit {
+    margin-left: 23.9%;
+    margin-bottom: 80px;
+    padding: 10px 29px 10px 29px;
+    background-color: #012169;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.button {
+    margin-left: 40px;
+    margin-bottom: 80px;
+    padding: 10px 29px 10px 29px;
+    background-color: #012169;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 300;
+}
+
+div.edit {
+    background-color: #E2E6ED;
+    padding: 50px 40px 40px 40px;
+}
+
+div.view {
+    margin-left: -40px;
+    color: #012169;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 300;
+    padding-bottom: 250px;
+}
+
+div.view p {
+    line-height: 24px;
+    margin-bottom: 10px;
+}
+
+div.view strong {
+    font-weight: 600;
+}
+
+div.view wrap {
+    width: 200px;  
+    word-break: break-all;
+}
+
+.back {
+    margin-left: 0px;
+    margin-top: 60px;
+    margin-right: 1px;
+    padding: 10px 20px 10px 20px;
+    background-color: #00539B;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 300;
+    text-decoration: none;
+}
+
+.imageCenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+  
+.field_with_errors:before{
+    content:" *";
+    color: red;
+}

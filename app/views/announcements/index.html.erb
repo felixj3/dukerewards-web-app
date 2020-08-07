@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+    <meta charset='utf-8'/>
+    <title>Duke Rewards</title>
+    <%= stylesheet_link_tag "application.css" %>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,400i,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <p id="notice"><%= notice %></p>
+
+  <nav>
+    <ul id="menu">
+      <%= image_tag("duke_wordmark_white.png", :alt => "Duke Wordmark") %>
+      <li class="name"> Duke Rewards </li>
+      <li><%= link_to "REWARDS", rewards_path %></li>
+      <li><%= link_to "EVENTS", events_path%></li>
+      <li><%= link_to "ANNOUNCEMENTS", announcements_path, class: "active" %></li>
+
+      <!-- <li><%= link_to "USERS", users_path %></li> -->
+    </ul>
+  </nav>
+
+  <h1>Announcements</h1>
+
+  <h2> Any announcement that gets created will notify every person with the Duke Rewards App through push notifications on their phone with the announcement message. All fields are required when creating an announcement. </h2>
+
+  <ul id="toolbar">
+      <li><%= link_to '+ Add', new_announcement_path %></li>
+      <li><%= link_to 'Edit', announcements_path, class: "active" %></li>
+  </ul>
+
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Date Created</th>
+          <th>Description</th>
+          <th>Category</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @announcements.each do |announcement| %>
+          <tr>
+            <td><%= announcement.title %></td>
+            <td><%= announcement.created_at.in_time_zone(ActiveSupport::TimeZone.new("Eastern Time (US & Canada)")).strftime("%F %H:%M %Z") %></td>
+            <td><%= announcement.description %></td>
+            <td><%= announcement.category %></td>
+            <td class="no-wrap">
+              <button><%= link_to 'Details', announcement %></button><br>
+              <button><%= link_to 'Edit', edit_announcement_path(announcement) %></button><br>
+              <button><%= link_to 'Remove', announcement, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</body>

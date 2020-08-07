@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+    <meta charset='utf-8'/>
+    <title>Duke Rewards</title>
+    <%= stylesheet_link_tag "application.css" %>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,400i,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+
+<nav>
+    <ul id="menu">
+      <%= image_tag("duke_wordmark_white.png", :alt => "Duke Wordmark") %>
+      <li class="name"> Duke Rewards </li>
+    </ul>
+</nav>
+
+<body>
+    <div class = "view">
+        <%= link_to 'Return', users_path%>
+    </div>
+
+    <div class = "view">
+        <image src=<%="data:image/jpeg;base64,#{@user.profile_pic}"%> id="responsive-image">
+    </div>
+
+    <div class = "view">
+        <strong>Image Link:</strong>
+        <wrap><%= @user.profile_pic %></wrap>
+    </div>
+</body>

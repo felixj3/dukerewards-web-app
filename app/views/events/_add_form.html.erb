@@ -1,0 +1,59 @@
+<%= form_with(model: event, local: true) do |form| %>
+  <% if event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+        <% event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+
+  <div class="field">
+    <%= form.label :points, "Points:" %>
+    <%= form.number_field :points, class: "number validationFixedWidth" %>
+  </div>
+
+  <div class="showlabel">
+    <%= form.label :name, "Event Name:" %>
+    <%= form.label :name, event.name, class: "autofilled" %>
+  </div>
+
+  <div class="showlabel">
+    <%= form.label :category, "Category:" %>
+    <%= form.label :category, event.category, class: "autofilled" %>
+  </div>
+
+  <div class="showlabel">
+    <%= form.label :location, "Location:" %>
+    <%= form.label :location, event.location, class: "autofilled" %>
+  </div>
+
+  <div class="showlabel field">
+    <%= form.label :radius, "Event size:" %>
+    <%= form.select :radius, ["None", "Small (< 20m)","Medium (20m - 100m)", "Large (100m - 300m)"], {:prompt => "Select radius."}, class: "validationFixedWidthRadius" %>
+  </div>
+
+
+  <div class="showlabel">
+    <%= form.label :description, "Description:" %>
+    <%= form.label :description, event.description, class: "autofilled" %>
+  </div>
+
+  <div class="showlabel">
+    <%= form.label :start_time, "Start Time:" %>
+    <%= form.label :start_time, event.start_time, class: "autofilled" %>
+  </div>
+
+  <div class="showlabel">
+    <%= form.label :end_time, "End Time:" %>
+    <%= form.label :end_time, event.end_time, class: "autofilled" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Submit Event", class: "submit" %>
+  </div>
+<% end %>

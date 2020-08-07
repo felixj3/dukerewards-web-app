@@ -1,0 +1,28 @@
+Confirmation of Reward Redemption
+===============================================
+ 
+You have successfully redeemed <%= @reward.name %>!
+ 
+Reward Description: <%= @reward.description %>
+
+<% if @reward.start_time == nil %>
+    <% time = "NA" %>
+<% else %>
+    <% time = @reward.start_time.in_time_zone(ActiveSupport::TimeZone.new("Eastern Time (US & Canada)")).strftime("%m/%d/%Y %H:%M") %>
+<% end %>
+
+Reward Start Time: <%= time %>
+ 
+Points deducted from your account: <%= @reward.points %>
+
+This QR code is a confirmation that you redeemed the reward. Please have it ready when you redeem your reward
+
+<% value = Redemption.find_by(user_id: @user.id, reward_id: @reward.id).QRcode %>
+
+Your email application does not seem to support HTML format, so below is a link to the QR code
+
+<%= "https://chart.googleapis.com/chart?chs=545x545&cht=qr&chl=#{value}&choe=UTF-8" %>
+
+Keep this email in your inbox until you have received/experienced your reward.  
+
+Thanks for using Duke Rewards!

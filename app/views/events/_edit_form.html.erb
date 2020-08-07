@@ -1,0 +1,71 @@
+<%= form_with(model: event, local: true) do |form| %>
+    <% if event.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+  
+        <ul>
+          <% event.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+
+  <div class="field">
+    <%= form.label :points, "Points:" %>
+    <%= form.number_field :points, class: "number" %>
+  </div>
+  <div class="field">
+    <%= form.label :radius, "Event size:" %>
+    <%= form.select :radius, ["None", "Small (< 20m)","Medium (20m - 100m)", "Large (100m - 300m)"], {:prompt => "Select radius."}, class: "validationFixedWidthRadius" %>
+  </div>
+
+  <div class="view">
+      <div class="showlabel">
+        <label>Name:</label>
+        <label class="autofilled"><%= @event.name %></label>
+      </div>
+
+      <div class="showlabel">
+        <label>Start time:</label>
+        <label class="autofilled"><%= @event.start_time %></label>
+      </div>
+
+      <div class="showlabel">
+        <label>End time:</label>
+        <label class="autofilled"><%= @event.end_time %></label>
+      </div>
+
+      <div class="showlabel">
+        <label>Location:</label>
+        <label class="autofilled"><%= @event.location %></label>
+      </div>
+
+      <div class="showlabel">
+        <label>Description:</label>
+        <label class="autofilled"><%= @event.description %></label>
+      </div>
+
+      <div class="showlabel">
+        <label>Points:</label>
+        <label class="autofilled"><%= @event.points %></label>
+      </div>
+
+      <div class="showlabel">
+        <label>Category:</label>
+        <label class="autofilled"><%= @event.category %></label>
+      </div>
+
+      <div class="showlabel">
+        <label>QR Code:</label>
+        <%= RQRCode::QRCode.new(@event.QRnumber).as_svg( offset: 0, color: "000", shape_rendering: 'crispEdges', module_size: 6, standalone: true ).html_safe %>
+      </div>
+    
+      <div class="actions">
+        <%= form.submit "Submit Event", class: "submit" %>
+      </div>
+      </div>
+
+  
+<% end %>

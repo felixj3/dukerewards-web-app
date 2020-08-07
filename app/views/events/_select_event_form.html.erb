@@ -1,0 +1,19 @@
+<%= form_with(url: events_selectEvent_path, method: "get", local: true) do %>
+    <div class="field">
+    <% options = ["Select Event"] %>
+    
+    <% @oppositeEvents = @oppositeEvents.sort_by(&:start_time)%>
+    <% @oppositeEvents.each do |c| %>
+      
+            
+            <%options << "#{Time.strptime(c.start_time, "%Y-%m-%dT%H:%M:%S%z").in_time_zone.strftime("%F %H:%M %Z")}  #{c.name}" %>
+            
+           
+    <% end %>
+        <%= select_tag(:selected, options_for_select(options), :class => "select") %>
+    </div>
+
+    <div class="actions">
+        <%= submit_tag("Select Event", :class => "button") %>
+    </div>
+<% end %>

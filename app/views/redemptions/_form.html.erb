@@ -1,0 +1,28 @@
+
+<% @reward.users.each do |user| %>
+  <label class="autofilled"><%= user.email %></label>
+
+  <% @redemption = Redemption.find_by(user_id: user.id, reward_id: @reward.id) %>
+
+  <%= form_for @redemption do |form| %>
+      
+    
+      <div class="field">
+        <%= form.label :adminNetID, "Admin initials:" %>
+        <%= form.text_field :adminNetID, class: "short-text validationFixedWidth" %>
+      </div>
+    
+      <div class="field">
+        <%= form.label :dateHandled, "Date handled:" %>
+        <%= form.datetime_select :dateHandled, { :order => [:day, :month, :year], :start_year => Time.now.year, :start_month => Time.now.month, :discard_hour => true, :discard_minute => true, :include_blank => true }, class: "time" %>
+      </div>
+    
+      <div class="actions">
+        <%= form.submit "Update redemption info", class: "submit" %>
+      </div>
+  <% end %>
+  
+<% end %>
+
+
+

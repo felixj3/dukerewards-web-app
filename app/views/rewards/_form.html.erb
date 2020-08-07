@@ -1,0 +1,72 @@
+<%= form_with(model: reward, local: true) do |form| %>
+  <% if reward.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reward.errors.count, "error") %> prohibited this reward from being saved:</h2>
+
+      <ul>
+        <% reward.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name, "Reward Name:" %>
+    <%= form.text_field :name, class: "short-text validationFixedWidth" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category, "Category:" %>
+    <%= form.select :category, ["Athletics","Dining"], {:prompt => "Select Category"}, class: "validationFixedWidthCategory" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :points, "Points:" %>
+    <%= form.number_field :points, class: "number validationFixedWidth" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_time, "Start Time:" %>
+    <%= form.datetime_select :start_time, { :order => [:day, :month, :year, :hour, :minute], :start_year => Time.now.year, :include_blank => true }, class: "time" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_time, "End Time:" %>
+    <%= form.datetime_select :end_time, { :order => [:day, :month, :year, :hour, :minute], :start_year => Time.now.year, :include_blank => true }, class: "time" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location, "Location:" %>
+    <%= form.text_field :location, class: "short-text validationFixedWidth" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description, "Description:" %>
+    <%= form.text_area :description, class: "validationFixedWidthDescription" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :expiry_time, "Expiry Time:" %>
+    <%= form.datetime_select :expiry_time, { :order => [:day, :month, :year, :hour, :minute], :start_year => Time.now.year, :include_blank => true }, class: "time" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :expiry_quantity, "Expiry Quantity:" %>
+    <%= form.number_field :expiry_quantity, class: "number" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email, "Contact Email:" %>
+    <%= form.text_field :email, class: "short-text validationFixedWidth" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Photo:" %>
+    <%= form.file_field :photo, class: "file" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Submit Reward", class: "submit" %>
+  </div>
+<% end %>

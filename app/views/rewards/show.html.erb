@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<head>
+    <meta charset='utf-8'/>
+    <title>Duke Rewards</title>
+    <%= stylesheet_link_tag "application.css" %>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,400i,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <p id="notice"><%= notice %></p>
+
+  <nav>
+    <ul id="menu">
+      <%= image_tag("duke_wordmark_white.png", :alt => "Duke Wordmark") %>
+      <li class="name"> Duke Rewards </li>
+      <li><%= link_to "REWARDS", rewards_path, class: "active" %></li>
+      <li><%= link_to "EVENTS", events_path%></li>
+      <li><%= link_to "ANNOUNCEMENTS", announcements_path %></li>
+
+      <!-- <li><%= link_to "USERS", users_path %></li> -->
+    </ul>
+  </nav>
+
+  <h1>View Reward</h1>
+
+  <ul id="toolbar">
+    <li><%= link_to '+ Add', new_reward_path %></li>
+    <li><%= link_to 'Edit', rewards_path, class: "active" %></li>
+  </ul>
+
+  <div class="edit">
+    <%= link_to 'Return to All Rewards', rewards_path, class: "back" %>
+    <%= link_to 'Edit', edit_reward_path(@reward), class: "back" %>
+    <!-- <%= link_to 'Edit redemption', edit_redemption_path(@reward), class: "back" %> -->
+
+    <div class="view">
+      <div class="showlabel">
+        <label>Name:</label>
+        <label class="autofilled"><%= @reward.name %></label>
+      </div>
+      
+      <div class="showlabel">
+        <label>Start time:</label>
+        <% if @reward.start_time == nil %>
+          <label class="autofilled"><%= @reward.start_time %></label>
+        <% else %>
+          <label class="autofilled"><%= @reward.start_time.strftime("%F %H:%M %Z") %></label>
+        <% end %>
+      </div>
+
+      <div class="showlabel">
+        <label>End time:</label>
+        <% if @reward.end_time == nil %>
+          <label class="autofilled"><%= @reward.end_time %></label>
+        <% else %>
+          <label class="autofilled"><%= @reward.end_time.strftime("%F %H:%M %Z") %></label>
+        <% end %>
+      </div>
+
+      <div class="showlabel">
+        <label>Location:</label>
+        <label class="autofilled"><%= @reward.location %></label>
+      </div>
+
+      <div class="showlabel">
+        <label>Description:</label>
+        <label class="autofilled"><%= @reward.description %></label>
+      </div>
+
+      <div class="showlabel">
+        <label>Points:</label>
+        <label class="autofilled"><%= @reward.points %></label>
+      </div>
+
+      <div class="showlabel">
+        <label>Category:</label>
+        <label class="autofilled"><%= @reward.category %></label>
+      </div>
+
+      <div class="showlabel">
+        <label>End time:</label>
+        <% if @reward.expiry_time == nil %>
+          <label class="autofilled"><%= @reward.expiry_time %></label>
+        <% else %>
+          <label class="autofilled"><%= @reward.expiry_time.strftime("%F %H:%M %Z") %></label>
+        <% end %>
+      </div>
+
+      
+
+      <div class="showlabel">
+        <label>Expiry quantity:</label>
+        <label class="autofilled"><%= @reward.expiry_quantity %></label>
+      </div>
+
+      <div class="showlabel">
+        <label>Contact email:</label>
+        <label class="autofilled"><%= @reward.email %></label>
+      </div>
+
+      <div class="showlabel">
+        <label>Photo:</label>
+        <% if @reward.photo.attached? %>
+          <label class="autofilled"><image src="<%=(url_for(@reward.photo))%>" id="responsive-image"></label> 
+        <% else %>
+          <label class="autofilled">No photo available</label> 
+        <% end %>
+      </div>
+
+      <div class="showlabel">
+        <label>Redeemed By:</label>
+        <% if @reward.users.empty? %>
+          <label class="autofilled">Not Redeemed Yet!</label>
+        <% else %>
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Student Email</th>
+                  <th>Admin Initial</th>
+                  <th>Date Handled</th>
+                </tr>
+              </thead>
+      
+              <tbody>
+                <% @reward.users.each do |user| %>
+                  <tr>
+                    <td><%= user.email %></td>
+                    <td><%= Redemption.find_by(user_id: user.id, reward_id: @reward.id).adminNetID %></td>
+                    <td><%= Redemption.find_by(user_id: user.id, reward_id: @reward.id).dateHandled %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</body>

@@ -1,0 +1,12 @@
+<h3 style="text-align:center"><%= @event.name %></h3>
+<h3 style="text-align:center"><%= @event.start_time %></h3>
+
+<%= link_to 'Back', events_path, class: "back" %>
+
+<h4 style="text-align:center">
+    <a href=<%= "https://chart.googleapis.com/chart?chs=545x545&cht=qr&chl=#{@event.QRnumber}&choe=UTF-8" %> target="_blank">The link to the same QR code shown below</a>
+</h4>
+
+<image src=<%="https://chart.googleapis.com/chart?chs=545x545&cht=qr&chl=#{@event.QRnumber}&choe=UTF-8"%> alt="QR code" class="imageCenter">
+
+

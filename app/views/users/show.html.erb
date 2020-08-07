@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @user.username %>
+</p>
+
+<p>
+  <strong>Profile pic:</strong>
+  <%= @user.profile_pic %>
+</p>
+
+<p>
+  <strong>Total points:</strong>
+  <%= @user.accumulated_total_points %>
+</p>
+
+<p>
+  <strong>Athletics points:</strong>
+  <%= @user.athletics_points %>
+</p>
+
+<p>
+  <strong>Dining points:</strong>
+  <%= @user.dining_points %>
+</p>
+
+<p>
+  <strong>Netid:</strong>
+  <%= @user.netid %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Total athletics points:</strong>
+  <%= @user.accumulated_athletics_points %>
+</p>
+
+<p>
+  <strong>Total dining points:</strong>
+  <%= @user.accumulated_dining_points %>
+</p>
+
+<p>
+  <strong>Primary Affiliation:</strong>
+  <%= @user.primary_affiliation %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Return', users_path %>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+    <meta charset='utf-8'/>
+    <title>Duke Rewards</title>
+    <%= stylesheet_link_tag "application.css" %>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,400i,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <p id="notice"><%= notice %></p>
+
+  <nav>
+    <ul id="menu">
+      <%= image_tag("duke_wordmark_white.png", :alt => "Duke Wordmark") %>
+      <li class="name"> Duke Rewards </li>
+      <li><%= link_to "REWARDS", rewards_path %></li>
+      <li><%= link_to "EVENTS", events_path, class: "active" %></li>
+      <li><%= link_to "ANNOUNCEMENTS", announcements_path %></li>
+
+      <!-- <li><%= link_to "USERS", users_path %></li> -->
+    </ul>
+  </nav>
+
+  <h1>Events</h1>
+
+  <h2>Events are pulled from other sources. Select the event you wish to add to our rewards app in the "+ Add" tab. Then, fill in the corresponding points and select the event parameter to set up location tracking. An event parameter of “None” will not track how long students stay at events - only a QR code scan will confirm their attendance. Upon submitting the points and event parameter, a QR code will be generated. You can always refer back to the code by clicking “Show” in the table display of all events. </h2>
+
+  <ul id="toolbar">
+      <li><%= link_to '+ Add', new_event_path %></li>
+      <li><%= link_to 'Display', events_path, class: "active" %></li>
+  </ul>
+
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Location</th>
+          <th>Radius</th>
+          <th>Points</th>
+          <th>Category</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @events.each do |event| %>
+            <tr>
+              <td><%= event.name %></td>
+              <td><%= event.start_time.in_time_zone(ActiveSupport::TimeZone.new("Eastern Time (US & Canada)")).strftime("%F %H:%M %Z") %></td>
+              <td><%= event.end_time.in_time_zone(ActiveSupport::TimeZone.new("Eastern Time (US & Canada)")).strftime("%F %H:%M %Z") %></td>
+              <td><%= event.location %></td>
+              <td><%= event.radius %></td>
+              <td class="center"><%= event.points %></td>
+              <td class="center"><%= event.category %></td>
+              <td class="no-wrap">
+                <button><%= link_to 'QR', event_qrCode_path(event.id) %></button><br>
+                <button><%= link_to 'Details', event %></button><br>
+                <button><%= link_to 'Edit', edit_event_path(event) %></button><br>
+                <button><%= link_to 'Remove', event, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+              </td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</body>

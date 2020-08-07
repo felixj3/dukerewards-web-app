@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'; charset="utf-8" />
+    </head>
+    <!-- Email styles need to be inline -->
+    <body>
+        <p>You got a new order from <%= @reward.name %>!</p>
+        <p>Confirmation of Reward Redemption</p>
+        <p>=================================</p>
+
+        <p>You have successfully redeemed <%= @reward.name %>!</p>
+        <p>Reward Description: <%= @reward.description %></p>
+        <% if @reward.start_time == nil %>
+            <% time = "NA" %>
+        <% else %>
+            <% time = @reward.start_time.in_time_zone(ActiveSupport::TimeZone.new("Eastern Time (US & Canada)")).strftime("%m/%d/%Y %H:%M") %>
+        <% end %>
+        <p>Reward Start Time: <%= time %></p>
+        <p>Points deducted from your account: <%= @reward.points %></p>
+        <p>This QR code is a confirmation that you redeemed the reward. Please have it ready when you redeem your reward</p>
+
+        <% value = Redemption.find_by(user_id: @user.id, reward_id: @reward.id).QRcode %>
+
+        <div>
+        <image src=<%="https://chart.googleapis.com/chart?chs=545x545&cht=qr&chl=#{value}&choe=UTF-8"%> alt="QR code">
+        </div>
+
+        <a href=<%= "https://chart.googleapis.com/chart?chs=545x545&cht=qr&chl=#{value}&choe=UTF-8" %> target="_blank">The link to the same QR code shown above</a>
+
+        <p><br>Keep this email in your inbox until you have received/experienced your reward. </p>
+        <p><br>Thanks for using Duke Rewards!</p>
+    </body>
+</html>

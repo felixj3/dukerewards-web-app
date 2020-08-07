@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  username: MyString
+  profile_pic: MyString
+  accumulated_total_points: 1
+  athletics_points: 1
+  dining_points: 1
+  netid: MyString
+  email: MyString
+
+two:
+  name: MyString
+  username: MyString
+  profile_pic: MyString
+  accumulated_total_points: 1
+  athletics_points: 1
+  dining_points: 1
+  netid: MyString
+  email: MyString

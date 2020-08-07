@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+    <meta charset='utf-8'/>
+    <title>Duke Rewards</title>
+    <%= stylesheet_link_tag "application.css" %>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,400i,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <p id="notice"><%= notice %></p>
+
+  <nav>
+    <ul id="menu">
+      <%= image_tag("duke_wordmark_white.png", :alt => "Duke Wordmark") %>
+      <li class="name"> Duke Rewards </li>
+      <li><%= link_to "REWARDS", rewards_path %></li>
+      <li><%= link_to "EVENTS", events_path%></li>
+      <li><%= link_to "ANNOUNCEMENTS", announcements_path, class: "active" %></li>
+
+      <!-- <li><%= link_to "USERS", users_path %></li> -->
+    </ul>
+  </nav>
+
+  <h1>View Announcement</h1>
+
+  <ul id="toolbar">
+      <li><%= link_to '+ Add', new_announcement_path %></li>
+      <li><%= link_to 'Edit', announcements_path, class: "active" %></li>
+  </ul>
+
+  <div class="edit">
+    
+    <%= link_to 'Return to All Announcements', announcements_path, class: "back" %>
+    <%= link_to 'Edit', edit_announcement_path(@announcement), class: "back" %>
+  
+    <div class="view">
+      <div class="showlabel">
+        <label>Title:</label>
+        <label class="autofilled"><%= @announcement.title %></label>
+      </div>
+
+      <div class="showlabel">
+        <label>Description:</label>
+        <label class="autofilled"><%= @announcement.description %></label>
+      </div>
+
+      <div class="showlabel">
+        <label>Category:</label>
+        <label class="autofilled"><%= @announcement.category %></label>
+      </div>
+    </div>
+  </div>
+</body>

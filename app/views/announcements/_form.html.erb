@@ -1,0 +1,32 @@
+<%= form_with(model: announcement, local: true) do |form| %>
+  <% if announcement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(announcement.errors.count, "error") %> prohibited this announcement from being saved:</h2>
+
+      <ul>
+        <% announcement.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title, "Title:" %>
+    <%= form.text_field :title, class: "short-text validationFixedWidth" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description, "Description:" %>
+    <%= form.text_area :description, class: "validationFixedWidthDescription" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category, "Category:" %>
+    <%= form.select :category, ["Athletics","Dining"], {:prompt => "Select Category"}, class: "validationFixedWidthCategory" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Submit Announcement", class: "submit" %>
+  </div>
+<% end %>

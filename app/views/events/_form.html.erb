@@ -1,0 +1,63 @@
+<%= form_with(model: event, local: true) do |form| %>
+  <% if event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+        <% event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ 
+  <div class="field">
+    <%= form.label :name, "Event Name:" %>
+    <%= form.label :name, event.name %>
+    <!-- <%= form.select :name, @events.collect {|c| [ c.name ] }, {:prompt => "Select Event"} %>  -->
+  </div>
+
+  <!--
+  <div class="field">
+    <%= form.label :category, "Category:" %>
+    <%= form.select :category, ["Athletics","Dining"], {:prompt => "Select Category"} %>
+  </div>
+  -->
+
+  <div class="field">
+    <%= form.label :points, "Points:" %>
+    <%= form.number_field :points, class: "number" %>
+  </div>
+
+  <!--
+  <div class="field">
+    <%= form.label :start_time, "Start Time:" %>
+    <%= form.datetime_select :start_time, { :order => [:day, :month, :year, :hour, :minute], :start_year => Time.now.year }, class: "time" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_time, "End Time:" %>
+    <%= form.datetime_select :end_time, { :order => [:day, :month, :year, :hour, :minute], :start_year => Time.now.year }, class: "time" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location, "Location:" %>
+    <%= form.text_field :location, class: "short-text" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :radius, "Event size:" %>
+    <%= form.select :radius, ["None", "Small (< 20m)","Medium (20m - 100m)", "Large (100m - 300m)"], {:prompt => "Select radius."}, class: "validationFixedWidthRadius" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description, "Description:" %>
+    <%= form.text_area :description%>
+  </div>
+   -->
+
+  <div class="actions">
+    <%= form.submit "Submit Event", class: "submit" %>
+  </div>
+<% end %>

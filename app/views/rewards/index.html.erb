@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<head>
+    <meta charset='utf-8'/>
+    <title>Duke Rewards</title>
+    <%= stylesheet_link_tag "application.css" %>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,400i,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <p id="notice"><%= notice %></p>
+
+  <nav>
+    <ul id="menu">
+      <%= image_tag("duke_wordmark_white.png", :alt => "Duke Wordmark") %>
+      <li class="name"> Duke Rewards </li>
+      <li><%= link_to "REWARDS", rewards_path, class: "active" %></li>
+      <li><%= link_to "EVENTS", events_path%></li>
+      <li><%= link_to "ANNOUNCEMENTS", announcements_path %></li>
+
+      <!-- <li><%= link_to "USERS", users_path %></li> -->
+    </ul>
+  </nav>
+
+  <h1>Rewards</h1>
+
+  <h2>Any reward that gets displayed in the Duke Rewards mobile app must be created here. When creating a new reward, it is mandatory to fill in the reward name, description, points amount, category, and contact email. For experiential rewards, you must fill in the start and end time, which refer to the time of the reward experience. To set the expiry of the reward, you must also fill in at least one of the options between expiry quantity and expiry time. The contact email provided will be notified whenever a student redeems this reward. Once they are notified, it is highly suggested for the contact person to reach out to users who redeem their reward for more specifics about the reward redemption process.</h2>
+
+  <ul id="toolbar">
+      <li><%= link_to '+ Add', new_reward_path %></li>
+      <li><%= link_to 'Edit', rewards_path, class: "active" %></li>
+  </ul>
+
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Location</th>
+          <th>Description</th>
+          <th>Points</th>
+          <th>Category</th>
+          <th>Expiry Time</th>
+          <th>Expiry Quantity</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @rewards.each do |reward| %>
+          <tr>
+            <td><%= reward.name %></td>
+            <% if reward.start_time == nil %>
+              <td><%= reward.start_time %></td>
+            <% else %>
+              <td><%= reward.start_time.strftime("%F %H:%M %Z") %></td>
+            <% end %>
+            <% if reward.end_time == nil %>
+              <td><%= reward.end_time %></td>
+            <% else %>
+              <td><%= reward.end_time.strftime("%F %H:%M %Z") %></td>
+            <% end %>
+            <td><%= reward.location %></td>
+            <td><%= reward.description %></td>
+            <td class="center"><%= reward.points %></td>
+            <td class="center"><%= reward.category %></td>
+            <% if reward.expiry_time == nil %>
+              <td><%= reward.expiry_time %></td>
+            <% else %>
+              <td><%= reward.expiry_time.strftime("%F %H:%M %Z") %></td>
+            <% end %>
+            <td class="center"><%= reward.expiry_quantity %></td>
+            <td class="no-wrap">
+              <button><%= link_to 'Details', reward %></button><br>
+              <button><%= link_to 'Edit', edit_reward_path(reward) %></button><br>
+              <button><%= link_to 'Remove', reward, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</body>
